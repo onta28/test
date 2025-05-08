@@ -24,24 +24,18 @@ if (isset($_SESSION['bill'])) {
             $statement = $connection->prepare($sql);
             $statement->execute([$lastInsertedId, $saleDate, $productID, $qty]);
         }
-
-        if (isset($_POST['sive'])) {
-
-            $sql = "insert into tb_summary_daily (sale_date, total_sales)
+        $sql = "insert into tb_summary_daily (sale_date, total_sales)
                     values (curdate(), ?)
                     on duplicate key update total_sales = total_sales + ?";
-            $statement = $connection->prepare($sql);
-            $statement->execute([$totalPrice, $totalPrice]);
+        $statement = $connection->prepare($sql);
+        $statement->execute([$totalPrice, $totalPrice]);
 
-            $sql = "insert into tb_summary_monthly (salem, total_sales)
+        $sql = "insert into tb_summary_monthly (salem, total_sales)
                     values (date_format(curdate(), '%Y-%m-01'), ?)
                     on duplicate key update total_sales = total_sales + ?";
-            $statement = $connection->prepare($sql);
-            $statement->execute([$totalPrice, $totalPrice]);
-            header("Location: http://localhost/katucafee3/component/Summary.php");
-            exit;
-        }
-    } else {
-        echo "ການເພີ່ມແມ່ນສໍາແລັດຮາາາາາ";
+        $statement = $connection->prepare($sql);
+        $statement->execute([$totalPrice, $totalPrice]);
+        header("Location: http://localhost/katucafee3/component/Summary.php");
+        exit;
     }
 }
