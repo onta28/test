@@ -8,7 +8,6 @@
     <form action="../backend/sell/binsert.php" method="post">
     <div class="d-flex justify-content-between">
         <h2 class="text-center mb-3">ລາຍຮັບປະຈໍາເດືອນ</h2>
-        <button name="sive" class="m-3 btn btn-primary">ສະຫຼຸບມື້ນີ້</button>
     </div>
 </form>
 
